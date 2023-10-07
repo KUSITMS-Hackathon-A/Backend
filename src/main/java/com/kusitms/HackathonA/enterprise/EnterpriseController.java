@@ -27,13 +27,12 @@ public class EnterpriseController {
     public ResponseEntity<?> List(){
         Enterprise enterprises = enterpriseService.findByAll();
 
-
         BaseResponse baseResponse = BaseResponse.builder()
                 .code(HttpStatus.OK.value())
                 .httpStatus(HttpStatus.OK)
                 .success(true)
                 .message("기업 조회 성공")
-                .data(new EnterpriseDto.Response(enterprises))
+                .data(enterprises)
                 .build();
 
         return new ResponseEntity<>(baseResponse, baseResponse.getHttpStatus());

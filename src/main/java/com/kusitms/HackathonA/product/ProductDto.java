@@ -1,5 +1,6 @@
 package com.kusitms.HackathonA.product;
 
+import com.kusitms.HackathonA.enterprise.Enterprise;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +29,7 @@ public class ProductDto {
                     .imageUrl(imageUrl)
                     .category(category)
                     .description(description)
-                    .enterprise(enterprise)
+                    .name(enterprise)
                     .progress(progress)
                     .build();
         }
@@ -61,7 +62,7 @@ public class ProductDto {
             this.imageUrl=product.getImageUrl();
             this.category=product.getCategory();
             this.description=product.getDescription();
-            this.enterprise=product.getEnterprise();
+            this.enterprise=product.getEnterpriseId().getName();
         }
     }
 
@@ -85,7 +86,7 @@ public class ProductDto {
             this.imageUrl = product.getImageUrl();
             this.price = product.getPrice();
             this.description = product.getDescription();
-            this.enterprise = product.getEnterprise();
+            this.enterprise = product.getEnterpriseId().getName();
             this.progress = product.getProgress();
         }
     }

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Builder
 public class ProductDto {
@@ -57,7 +59,6 @@ public class ProductDto {
     @Data
     public static class Response{
 
-        private Long productId;
 
         private String name;
 
@@ -71,18 +72,46 @@ public class ProductDto {
 
         private String enterprise;
 
-        private Long progress;
 
         public Response(Product product) {
-            this.productId = getProductId();
-            this.name=getName();
-            this.price=getPrice();
-            this.imageUrl=getImageUrl();
-            this.category=getCategory();
-            this.description=getDescription();
-            this.enterprise=getEnterprise();
-            this.progress=getProgress();
+            this.name=product.getName();
+            this.price=product.getPrice();
+            this.imageUrl=product.getImageUrl();
+            this.category=product.getCategory();
+            this.description=product.getDescription();
+            this.enterprise=product.getEnterprise();
         }
+    }
 
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Data
+    public static class PreviewResponse {
+
+
+        private Long productId;
+        private String name;
+        private String imageUrl;
+        private String price;
+        private String description;
+        private String enterprise;
+        private Long progress;
+
+
+        public PreviewResponse(Product product) {
+            this.productId = product.getProductId();
+            this.name = product.getName();
+            this.imageUrl = product.getImageUrl();
+            this.price = product.getPrice();
+            this.description = product.getDescription();
+            this.enterprise = product.getEnterprise();
+            this.progress = product.getProgress();
+        }
+    }
+
+    public static List<PreviewResponse> toPreviewList(List<Product> productList) {
+        return productList.stream()
+                .map(PreviewResponse::new)
+                .collect(Collectors.toList());
     }
 }

@@ -1,4 +1,7 @@
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     url: jdbc:mysql://database-2.coqkyunwvgqe.ap-northeast-2.rds.amazonaws.com:3306/hackathonA?serverTimezone=UTC&characterEncoding=UTF-8
     username: admin
@@ -27,5 +30,21 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
 
 
+cloud:
+  aws:
+    s3:
+      bucket: hackathona
+    credentials:
+      access-key: AKIAZUWZI7RT5LBSK4BL
+      secret-key: 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
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false

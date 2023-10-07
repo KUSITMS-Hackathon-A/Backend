@@ -46,6 +46,9 @@ public class UserEntity {
     @Column
     private Date regDate;
 
+    @Column
+    private Long pedometer;
+
     @OneToMany(mappedBy = "ordersId")
     private List<OrdersEntity> ordersEntityList;
 

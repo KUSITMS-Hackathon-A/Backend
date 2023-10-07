@@ -1,6 +1,7 @@
 package com.kusitms.HackathonA.product;
 
 import com.kusitms.HackathonA.enterprise.Enterprise;
+import com.kusitms.HackathonA.orders.OrderDetailEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -44,5 +46,7 @@ public class Product {
     @Column
     private Long progress;
 
+    @OneToMany(mappedBy = "orderDetailId")
+    private List<OrderDetailEntity> orderDetailEntityList;
 
 }

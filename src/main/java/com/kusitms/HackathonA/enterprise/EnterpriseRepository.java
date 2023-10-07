@@ -12,4 +12,6 @@ public interface EnterpriseRepository extends JpaRepository<Enterprise,Long> {
     Enterprise findByName(String enterpriseName);
 
     List<Product> findByEnterpriseId(Long enterpriseId);
+
+
 }

@@ -44,5 +44,14 @@ public class Product {
     @Column
     private Long progress;
 
+    @Column
+    private String imageUrl1;
+    @Column
+    private String imageUrl2;
+    @Column
+    private String description1;
+    @Column
+    private String description2;
+
 
 }

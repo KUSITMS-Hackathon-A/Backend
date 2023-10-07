@@ -124,4 +124,15 @@ public class ProductDto {
                 .map(PreviewResponse::new)
                 .collect(Collectors.toList());
     }
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Data
+    public static class BuyRequest {
+
+        private Long productId;
+        private Long quantity;
+        private Long userId;
+
+    }
 }

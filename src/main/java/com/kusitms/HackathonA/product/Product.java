@@ -40,7 +40,10 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "enterprise_id")
     private Enterprise enterpriseId;
-
+    @Column
+    private String progressTitle;
+    @Column
+    private String progressDescription;
     @Column
     private Long progress;
 

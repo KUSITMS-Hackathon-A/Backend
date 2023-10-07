@@ -1,5 +1,6 @@
 package com.kusitms.HackathonA.product;
 
+import com.kusitms.HackathonA.enterprise.Enterprise;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,9 +37,12 @@ public class Product {
     @Column
     private String description;
 
-    @Column
-    private String enterprise;
+    @ManyToOne
+    @JoinColumn(name = "enterprise_id")
+    private Enterprise enterpriseId;
 
     @Column
     private Long progress;
+
+
 }

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,7 +68,9 @@ public class ProductDto {
         private String category;
         private String description;
         private String enterprise;
+        private String progressTitle;
 
+        private String progressDescription;
         private Long progress;
         private String imageUrl1;
         private String imageUrl2;
@@ -80,6 +84,8 @@ public class ProductDto {
             this.category=product.getCategory();
             this.description=product.getDescription();
             this.enterprise=product.getEnterpriseId().getName();
+            this.progressTitle=product.getProgressTitle();
+            this.progressDescription=product.getProgressDescription();
             this.progress=product.getProgress();
             this.imageUrl1=product.getImageUrl1();
             this.imageUrl2=product.getImageUrl2();

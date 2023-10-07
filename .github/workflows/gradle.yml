@@ -28,6 +28,12 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
+        
+    - name: make application-prod.yml
+      run: |
+        cd ./src/main/resources
+        touch ./application-prod.yml
+        echo "${{ secrets.APPLICATION_PROD }}" > ./application-prod.yml
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
@@ -52,6 +58,6 @@ jobs:
         script: |
           docker pull ${{ secrets.DOCKER_USERNAME }}/hackathonA:latest
           docker stop $(docker ps -a -q)
-          docker run -d --log-driver=syslog -p 8080:8080 -e ${{ secrets.DOCKER_USERNAME }}/hackathonA:latest
+          docker run -d --log-driver=syslog -p 8080:8080 -e SPRING_PROFILES_ACTIVE=prod ${{ secrets.DOCKER_USERNAME }}/hackathonA:latest
           docker rm $(docker ps --filter 'status=exited' -a -q)
           docker image prune -a -f

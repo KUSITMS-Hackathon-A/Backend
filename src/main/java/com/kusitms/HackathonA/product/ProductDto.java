@@ -21,6 +21,10 @@ public class ProductDto {
         private String description;
         private String enterprise;
         private Long progress;
+        private String imageUrl1;
+        private String imageUrl2;
+        private String description1;
+        private String description2;
 
         public Product toEntity() {
             return Product.builder()
@@ -31,17 +35,24 @@ public class ProductDto {
                     .description(description)
                     .name(enterprise)
                     .progress(progress)
+                    .imageUrl1(imageUrl1)
+                    .imageUrl2(imageUrl2)
+                    .description1(description1)
+                    .description2(description2)
                     .build();
         }
 
         public Request(Product product) {
-            this.name=getName();
-            this.price=getPrice();
-            this.imageUrl=getImageUrl();
-            this.category=getCategory();
-            this.description=getDescription();
-            this.enterprise=getEnterprise();
-            this.progress=getProgress();
+            this.name=product.getName();
+            this.price=product.getPrice();
+            this.imageUrl=product.getImageUrl();
+            this.category=product.getCategory();
+            this.description=product.getDescription();
+            this.enterprise=product.getEnterpriseId().getName();
+            this.imageUrl1=product.getImageUrl1();
+            this.imageUrl2=product.getImageUrl2();
+            this.description1=product.getDescription1();
+            this.description2=product.getDescription2();
         }
     }
     @AllArgsConstructor
@@ -55,6 +66,10 @@ public class ProductDto {
         private String category;
         private String description;
         private String enterprise;
+        private String imageUrl1;
+        private String imageUrl2;
+        private String description1;
+        private String description2;
 
         public Response(Product product) {
             this.name=product.getName();
@@ -63,6 +78,10 @@ public class ProductDto {
             this.category=product.getCategory();
             this.description=product.getDescription();
             this.enterprise=product.getEnterpriseId().getName();
+            this.imageUrl1=product.getImageUrl1();
+            this.imageUrl2=product.getImageUrl2();
+            this.description1=product.getDescription1();
+            this.description2=product.getDescription2();
         }
     }
 

@@ -19,7 +19,9 @@ import javax.persistence.*;
     @Column(name = "order_detail_id")
     private Long orderDetailId;
 
-    private Long orderId;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="orders_id")
+    private OrdersEntity ordersId;
 
     private Long productId;
 

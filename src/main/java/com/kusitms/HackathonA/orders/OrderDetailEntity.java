@@ -1,5 +1,6 @@
 package com.kusitms.HackathonA.orders;
 
+import com.kusitms.HackathonA.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,11 +24,15 @@ import javax.persistence.*;
     @JoinColumn(name="orders_id")
     private OrdersEntity ordersId;
 
-    private Long productId;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="product_id")
+    private Product productId;
 
     @Column
     private Long quantity;
 
     @Column(columnDefinition = "varchar(255) default '1'")
     private String result; // 1:배송전, 2:배송후
+
+
 }

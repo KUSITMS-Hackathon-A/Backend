@@ -20,12 +20,16 @@ public class Enterprise {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "enterprise_id")
     private Long enterpriseId;
+
     @Column
     private String name;
+
     @Column
     private String description;
+
     @Column
     private String shortsUrl;
+
     @Column
     private String articleUrl;
 

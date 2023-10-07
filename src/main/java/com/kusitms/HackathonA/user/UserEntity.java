@@ -1,5 +1,6 @@
 package com.kusitms.HackathonA.user;
 
+import com.kusitms.HackathonA.orders.OrdersEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -43,5 +45,10 @@ public class UserEntity {
 
     @Column
     private Date regDate;
+
+    @OneToMany(mappedBy = "ordersId")
+    private List<OrdersEntity> ordersEntityList;
+
+
 
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class userController {
 
     private final UserRepository userRepository;
+    private final UserService userService;
 
     //유저 등록
     @PostMapping("")
@@ -39,7 +40,7 @@ public class userController {
     @GetMapping("/mypage/{userId}")
     @ApiOperation(value = "유저마다 마이페이지 조회")
     @ResponseBody
-    public ResponseEntity<?> readProduct(@PathVariable Long userId){
+    public ResponseEntity<?> readMypage (@PathVariable Long userId){
 
         //유저마다 구매한 상품 리스트
         //유저마다 구매 이력이 있는 기업 리스트
@@ -51,7 +52,6 @@ public class userController {
                 .message("유저 마이페이지 조회 성공")
                 .data(userId)
                 .build();
-
 
         return new ResponseEntity<>(baseResponse, baseResponse.getHttpStatus());
     }

@@ -1,12 +1,15 @@
 package com.kusitms.HackathonA.user;
 
 import com.kusitms.HackathonA.base.BaseResponse;
+import com.kusitms.HackathonA.orders.OrdersEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -44,13 +47,14 @@ public class userController {
 
         //유저마다 구매한 상품 리스트
         //유저마다 구매 이력이 있는 기업 리스트
+        List<OrdersEntity> result = userService.readMypage(userId);
 
         BaseResponse baseResponse = BaseResponse.builder()
                 .code(HttpStatus.OK.value())
                 .httpStatus(HttpStatus.OK)
                 .success(true)
                 .message("유저 마이페이지 조회 성공")
-                .data(userId)
+                .data(result)
                 .build();
 
         return new ResponseEntity<>(baseResponse, baseResponse.getHttpStatus());

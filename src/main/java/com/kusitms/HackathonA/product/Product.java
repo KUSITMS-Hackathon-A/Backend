@@ -42,11 +42,23 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "enterprise_id")
     private Enterprise enterpriseId;
-
+    @Column
+    private String progressTitle;
+    @Column
+    private String progressDescription;
     @Column
     private Long progress;
 
     @OneToMany(mappedBy = "orderDetailId")
     private List<OrderDetailEntity> orderDetailEntityList;
+
+    @Column
+    private String imageUrl1;
+    @Column
+    private String imageUrl2;
+    @Column
+    private String description1;
+    @Column
+    private String description2;
 
 }

@@ -118,7 +118,7 @@ public class ProductController {
                 .httpStatus(HttpStatus.OK)
                 .success(true)
                 .message("상품 구매 성공")
-                .data(product)
+                .data(product.getProductId())
                 .build();
 
         return new ResponseEntity<>(baseResponse, baseResponse.getHttpStatus());

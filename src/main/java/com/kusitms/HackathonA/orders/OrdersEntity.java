@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -27,5 +28,8 @@ public class OrdersEntity {
 
     @Column
     private Date indate;
+
+    @OneToMany(mappedBy = "orderDetailId")
+    private List<OrderDetailEntity> orderDetailEntityList;
 
 }

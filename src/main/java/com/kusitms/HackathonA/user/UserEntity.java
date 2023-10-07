@@ -19,7 +19,7 @@ import java.util.List;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "usert_id")
+    @Column(name = "user_id")
     private Long userId;
 
     @Column
@@ -48,7 +48,5 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "ordersId")
     private List<OrdersEntity> ordersEntityList;
-
-
 
 }

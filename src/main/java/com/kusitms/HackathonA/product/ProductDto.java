@@ -66,6 +66,8 @@ public class ProductDto {
         private String category;
         private String description;
         private String enterprise;
+
+        private Long progress;
         private String imageUrl1;
         private String imageUrl2;
         private String description1;
@@ -78,6 +80,7 @@ public class ProductDto {
             this.category=product.getCategory();
             this.description=product.getDescription();
             this.enterprise=product.getEnterpriseId().getName();
+            this.progress=product.getProgress();
             this.imageUrl1=product.getImageUrl1();
             this.imageUrl2=product.getImageUrl2();
             this.description1=product.getDescription1();

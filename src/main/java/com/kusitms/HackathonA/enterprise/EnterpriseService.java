@@ -18,7 +18,7 @@ public class EnterpriseService {
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
 
-    public List<Enterprise> findByAll(){return enterpriseRepository.findAll();}
+    public Enterprise findByAll(){return enterpriseRepository.findByName("RE:BUD");}
 
     public List<ProductDto.Response> readProductListByEnterprise(String enterpriseName){
         Enterprise enterprise = enterpriseRepository.findByName(enterpriseName);

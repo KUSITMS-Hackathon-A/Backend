@@ -25,17 +25,15 @@ public class EnterpriseController {
     @ApiOperation(value = "기업 소개")
     @ResponseBody
     public ResponseEntity<?> List(){
-        List<Enterprise> enterprises = enterpriseService.findByAll();
-        List<EnterpriseDto.Response> resultDto = enterprises.stream()
-                .map(data-> modelMapper.map(data, EnterpriseDto.Response.class))
-                .collect(Collectors.toList());
+        Enterprise enterprises = enterpriseService.findByAll();
+
 
         BaseResponse baseResponse = BaseResponse.builder()
                 .code(HttpStatus.OK.value())
                 .httpStatus(HttpStatus.OK)
                 .success(true)
                 .message("기업 조회 성공")
-                .data(resultDto)
+                .data(new EnterpriseDto.Response(enterprises))
                 .build();
 
         return new ResponseEntity<>(baseResponse, baseResponse.getHttpStatus());
